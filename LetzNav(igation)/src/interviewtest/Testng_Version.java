@@ -23,23 +23,30 @@ public class Testng_Version {
 	//Declaring WebDriver 
 	WebDriver driver;
 	WebDriverWait myWait;
+	// Initializing an object for POM 
 	PageObjectModel1 page = new PageObjectModel1(driver);
 
 	//Opening Web page of LetzNav 
 	@BeforeClass
 	public void openBrowser() throws InterruptedException
 	{
+		// Initializing WebDriver 	
 		driver = new ChromeDriver();
+		//storing Web site URL as a String
 		String BaseURL="https://letz-interview.herokuapp.com/login";
-		
+		// Open Web Application 
 		driver.get(BaseURL);
+		// Maximize Web Application 
 		driver.manage().window().maximize();
 		
 		//Verifying page title........
+				// Storing Web Application HomePage Title as expTitle 
 				String expTitle="letzNav Admin"; 
+				// Getting Web Application HomePage Title as actualTitle  
 				String actualTitle=driver.getTitle();
+				// Comparing expected and actual result of HomePage Title   
 				if(actualTitle.equals(expTitle)){
-					System.out.println("HomePage opened successfully");
+					System.out.println("HomePage opened successfully"); // It prints the Output
 				}
 		Thread.sleep(5000);
 	}
@@ -48,28 +55,31 @@ public class Testng_Version {
 	@Test(priority=0)
 	public void login() throws Exception
 	{
+		// Declaring .xlsx path 
 		String path=System.getProperty("user.dir")+"/letznavsheet.xlsx";
 		File src = new File(path);
 		FileInputStream fis = new FileInputStream(src);
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		// OPening first sheet of xlsx 
 		XSSFSheet sheet = workbook.getSheetAt(0);
 		
+		// Storing of username and password in string 
 		String username = sheet.getRow(1).getCell(0).getStringCellValue();
 		String password = sheet.getRow(1).getCell(1).getStringCellValue();
-		workbook.close();
-		PageObjectModel1 page = new PageObjectModel1(driver);
+		workbook.close(); // Closes workbook 
+		PageObjectModel1 page = new PageObjectModel1(driver); // Initializing an object for POM  
 		
-		page.UN.sendKeys(username);		
-		page.PWD.sendKeys(password);
-		WebElement Login_Button = page.Submit;
+		page.UN.sendKeys(username);		// Find username and fill userName 
+		page.PWD.sendKeys(password);    // Find PWD and fill it 
+		WebElement Login_Button = page.Submit;  
 		
 		if(Login_Button.isEnabled()){
-			page.Submit.click();	
+			page.Submit.click();	 // Verify Login button is enabled 
 		}else{
-			System.out.println("Login button not enabled");
+			System.out.println("Login button not enabled");  
 		}
 		Thread.sleep(5000);
-		Assert.assertEquals(driver.getTitle(), "letzNav Admin");
+		Assert.assertEquals(driver.getTitle(), "letzNav Admin"); // Verify Login Success 
 
 	}
 
