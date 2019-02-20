@@ -119,44 +119,44 @@ public class Testng_Version {
 		
 		Thread.sleep(5000);
 		
-		
+		// Stores All Roles names in a WebElement 
 		ArrayList<WebElement> rn = (ArrayList<WebElement>)driver.findElements(By.xpath("(//table/tbody/tr)/td[1]"));
 				
-		boolean status = false;
+		boolean status = false; // Assumes that Role is not present then go to 'For loop' to validate it 
 		
 		for(int i=0; i<rn.size(); i++)
 		{			
-			if(rn.get(i).getText().contains("Test Interview"))
+			if(rn.get(i).getText().contains("Test Interview")) 
 			{
-				status=true;
-				break;
+				status=true; 
+				break; // Break if above contains text matches with any of Roles stored in WebElement  
 			}
 		}
 		
-		if (status==false)
+		if (status==false) // If Role is not present the execute below block of code 
 		{
-			page.AddRole.click();
-			page.RoleName.sendKeys(rolename);
-			page.RoleDesc.sendKeys(roledescription);
+			page.AddRole.click(); // Click AddRole button 
+			page.RoleName.sendKeys(rolename); // Find RoleName and fill it
+			page.RoleDesc.sendKeys(roledescription); // Find RoleDesc and fill it
 			
 			Thread.sleep(4000);
-			WebElement ele = driver.findElement(By.xpath("//div[@class='mat-select-trigger']")); 
-			ele.click();
+			WebElement ele = driver.findElement(By.xpath("//div[@class='mat-select-trigger']")); // Find Drop down list box of Permissions
+			ele.click(); // Clicks Drop down list box 
 			
 			Thread.sleep(4000);
-			WebElement view = driver.findElement(By.xpath("//md-option[@id='md-option-127']")); 
-			view.click(); 
+			WebElement view = driver.findElement(By.xpath("//md-option[@id='md-option-127']")); // Find a given permission from the drop down list box 
+			view.click(); // Clicks on above find permission value
 			Thread.sleep(4000);
-			page.AddButton_Role.click();
+			page.AddButton_Role.click(); // Clicks on Add button 
 			Thread.sleep(4000);			
 			
-			String ActualResult=driver.findElement(By.xpath("//table/tbody/tr[11]/td[1]")).getText();
-			Assert.assertEquals(ActualResult, "Test Interview");		
+			String ActualResult=driver.findElement(By.xpath("//table/tbody/tr[11]/td[1]")).getText(); // stores added role as ActualResult
+			Assert.assertEquals(ActualResult, "Test Interview");		// Compares ActualResult with Expected 
 			
-			System.out.println("Role Name is added successfully");
+			System.out.println("Role Name is added successfully"); // Prints if above condition is true 
 		}else{		
-		Assert.assertTrue(status);
-		System.out.println("Role Name is already exist");
+		Assert.assertTrue(status); // If Role is already added 
+		System.out.println("Role Name is already exist"); // Prints Role is already added. 
 		}		
 	}
 
@@ -182,14 +182,14 @@ public class Testng_Version {
 		Thread.sleep(4000);
 	
 		ArrayList<WebElement> users = (ArrayList<WebElement>)driver.findElements(By.xpath("(//table/tbody/tr)/td[1]"));
-		boolean status = false;
+		boolean status = false; // Assume that User is not present then go to 'For loop' to validate it 
 		
 		for(int i=0; i<users.size(); i++)
 		{			
 			if(users.get(i).getText().contains("BajiPrasadCH"))
 			{
 				status=true;
-				break;				
+				break;	// Break if above contains text matches with any of User stored in WebElement			
 			}
 		}
 		
