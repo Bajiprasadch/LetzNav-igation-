@@ -106,15 +106,16 @@ public class Testng_Version {
 		File src = new File(path);
 		FileInputStream fis = new FileInputStream(src);
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		// OPening second sheet of xlsx  
 		XSSFSheet sheet = workbook.getSheetAt(1);
-		
+		// Storing of role name and description in string 
 		String rolename = sheet.getRow(1).getCell(0).getStringCellValue();
 		String roledescription = sheet.getRow(1).getCell(1).getStringCellValue();
-		workbook.close();		
+		workbook.close();	// Closed workbook	
 		
-		PageObjectModel1 page = new PageObjectModel1(driver);
+		PageObjectModel1 page = new PageObjectModel1(driver); // Initializing an object for POM  
 		Thread.sleep(2000);
-		page.Roles.click();
+		page.Roles.click(); // Click on Roles section under SS
 		
 		Thread.sleep(5000);
 		
@@ -163,19 +164,21 @@ public class Testng_Version {
 	@Test(priority=3)
 	public void addUser() throws InterruptedException, IOException
 	{
+		//Provide UserName and Description via xlsx
 		String path=System.getProperty("user.dir")+"/letznavsheet.xlsx";
 		File src = new File(path);
 		FileInputStream fis = new FileInputStream(src);
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
+		// OPening third sheet of xlsx 
 		XSSFSheet sheet = workbook.getSheetAt(2);
-		
+		// Storing of name and email in string 
 		String name = sheet.getRow(1).getCell(0).getStringCellValue();
 		String email = sheet.getRow(1).getCell(1).getStringCellValue();
-		workbook.close();			
+		workbook.close();	// Closed workbook		
 		
-		PageObjectModel1 page = new PageObjectModel1(driver);
+		PageObjectModel1 page = new PageObjectModel1(driver); // Initializing an object for POM  
 		Thread.sleep(2000);
-		page.Users.click();
+		page.Users.click(); // Click on Users section under SS
 		Thread.sleep(4000);
 	
 		ArrayList<WebElement> users = (ArrayList<WebElement>)driver.findElements(By.xpath("(//table/tbody/tr)/td[1]"));
@@ -192,41 +195,41 @@ public class Testng_Version {
 		
 		if (status==false)
 		{
-			page.AddUser.click();
+			page.AddUser.click(); // Open Add user window / table 
 			Thread.sleep(4000);
-			page.User_Active_CheckBox.click();
+			page.User_Active_CheckBox.click(); // Checks the 'User_Active' Radio button 
 			Thread.sleep(4000);
-			page.User_Name.sendKeys(name);
-			page.User_Email.sendKeys(email);
+			page.User_Name.sendKeys(name); // Finds username and enters in it
+			page.User_Email.sendKeys(email); // Finds password and enters in it
 			 
 			Thread.sleep(6000);
 			
 			Actions dropdown = new Actions(driver);
-			WebElement w1= driver.findElement(By.xpath("//md-select/div/span"));
-			dropdown.moveToElement(w1).doubleClick().build().perform();
+			WebElement w1= driver.findElement(By.xpath("//md-select/div/span")); // Finds Roles Drop down 
+			dropdown.moveToElement(w1).doubleClick().build().perform(); // Clicks Drop down 
 
 			Thread.sleep(6000);
 			
-			WebElement w2= driver.findElement(By.xpath("//md-option[11]"));
-			dropdown.moveToElement(w2).doubleClick().build().perform();
+			WebElement w2= driver.findElement(By.xpath("//md-option[11]")); // Finds Role Text based upon XPath 
+			dropdown.moveToElement(w2).doubleClick().build().perform(); // Clicks on text 
 			
 			
 			Thread.sleep(6000);
-			driver.findElement(By.xpath("//div[@class='mat-radio-label-content']")).click(); 
+			driver.findElement(By.xpath("//div[@class='mat-radio-label-content']")).click(); // Selects All Applications Radio button 
 			Thread.sleep(6000);
-			driver.findElement(By.xpath("//button[@class='btn btn-primary']")).click();
+			driver.findElement(By.xpath("//button[@class='btn btn-primary']")).click(); // Clicks on Add button 
 			
 			Thread.sleep(10000);
-			driver.navigate().refresh();
+			driver.navigate().refresh(); // Refreshes the browser 
 			Thread.sleep(10000);
 			
-			String actualResult = driver.findElement(By.xpath("//table/tbody/tr[2]/td[1]")).getText();
-			Assert.assertEquals(actualResult,"BajiPrasadCH");
-			System.out.println("User is added successfully");
+			String actualResult = driver.findElement(By.xpath("//table/tbody/tr[2]/td[1]")).getText(); // gets the actual text and stores in actualResult
+			Assert.assertEquals(actualResult,"BajiPrasadCH"); //Compares actual with expected  
+			System.out.println("User is added successfully"); // then prints it as per in print statement
 		 
 		}else{
 		
-		Assert.assertTrue(status);
+		Assert.assertTrue(status); // Verifies and if user name is already exist then prints it as per in below print statement 
 		System.out.println("User Name is already exist");
 		}
 	}
