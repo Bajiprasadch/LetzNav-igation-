@@ -19,11 +19,13 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.*; 
 
 public class Testng_Version {
+	 
+	//Declaring WebDriver 
 	WebDriver driver;
 	WebDriverWait myWait;
 	PageObjectModel1 page = new PageObjectModel1(driver);
 
-
+	//Opening Web page of LetzNav 
 	@BeforeClass
 	public void openBrowser() throws InterruptedException
 	{
@@ -33,7 +35,7 @@ public class Testng_Version {
 		driver.get(BaseURL);
 		driver.manage().window().maximize();
 		
-		//verify page title........
+		//Verifying page title........
 				String expTitle="letzNav Admin"; 
 				String actualTitle=driver.getTitle();
 				if(actualTitle.equals(expTitle)){
@@ -85,12 +87,11 @@ public class Testng_Version {
 		
 	}
 
-
+	//Verifying Add role is already present or create a new Role
 	@Test(priority=2)
 	public void addRole() throws InterruptedException, IOException
-	{
-		
-		
+	{		
+		// Provide RoleName and Description via xlsx
 		String path=System.getProperty("user.dir")+"/letznavsheet.xlsx";
 		File src = new File(path);
 		FileInputStream fis = new FileInputStream(src);
@@ -113,15 +114,12 @@ public class Testng_Version {
 		boolean status = false;
 		
 		for(int i=0; i<rn.size(); i++)
-		{
-			
+		{			
 			if(rn.get(i).getText().contains("Test Interview"))
 			{
 				status=true;
 				break;
-				
 			}
-
 		}
 		
 		if (status==false)
@@ -139,29 +137,22 @@ public class Testng_Version {
 			view.click(); 
 			Thread.sleep(4000);
 			page.AddButton_Role.click();
-			Thread.sleep(4000);
-			
+			Thread.sleep(4000);			
 			
 			String ActualResult=driver.findElement(By.xpath("//table/tbody/tr[11]/td[1]")).getText();
 			Assert.assertEquals(ActualResult, "Test Interview");		
 			
 			System.out.println("Role Name is added successfully");
-		}else{
-		
-		
+		}else{		
 		Assert.assertTrue(status);
 		System.out.println("Role Name is already exist");
-		}
-
-		
+		}		
 	}
 
-
+	//Verifying Add User is already present or else create a new User
 	@Test(priority=3)
 	public void addUser() throws InterruptedException, IOException
 	{
-		
-
 		String path=System.getProperty("user.dir")+"/letznavsheet.xlsx";
 		File src = new File(path);
 		FileInputStream fis = new FileInputStream(src);
@@ -181,15 +172,12 @@ public class Testng_Version {
 		boolean status = false;
 		
 		for(int i=0; i<users.size(); i++)
-		{
-			
+		{			
 			if(users.get(i).getText().contains("BajiPrasadCH"))
 			{
 				status=true;
-				break;
-				
+				break;				
 			}
-
 		}
 		
 		if (status==false)
@@ -226,13 +214,14 @@ public class Testng_Version {
 			Assert.assertEquals(actualResult,"BajiPrasadCH");
 			System.out.println("User is added successfully");
 		 
-	}else{
+		}else{
 		
 		Assert.assertTrue(status);
 		System.out.println("User Name is already exist");
-	}
+		}
 	}
 
+	// Close the Web application 
 	@AfterClass
 	public void close()
 	{
