@@ -87,13 +87,13 @@ public class Testng_Version {
 	@Test(priority=1)
 	public void systemSettings() throws InterruptedException
 	{
-		PageObjectModel1 page = new PageObjectModel1(driver);
+		PageObjectModel1 page = new PageObjectModel1(driver); // Initializing an object for POM  
 		
-		page.SS.click();
+		page.SS.click(); // Click on System Settings Link on left down side 
 		
 		Thread.sleep(2000);
-		String actualResult = driver.findElement(By.xpath("//span[contains(text(),'Roles')]")).getText();
-		Assert.assertEquals(actualResult, "Roles");
+		String actualResult = driver.findElement(By.xpath("//span[contains(text(),'Roles')]")).getText(); // get text for Roles
+		Assert.assertEquals(actualResult, "Roles"); // Comparing of expected and actual result for Roles  
 		
 	}
 
@@ -231,7 +231,7 @@ public class Testng_Version {
 		}
 	}
 
-	// Close the Web application 
+	// Close the Web Application 
 	@AfterClass
 	public void close()
 	{
