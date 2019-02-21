@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.*;
+import org.testng.annotations.*; 
 
 public class Testng_Version {
 
@@ -25,15 +25,15 @@ public class Testng_Version {
 	WebDriverWait myWait;
 	// Initializing an object for POM
 	PageObjectModel1 page = new PageObjectModel1(driver);
-	String rolename;
-	String roledescription;
-	String username;
-	String password;
-	String name;
-	String email;
+	String rolename1;
+	String roledescription1;
+	String username1;
+	String password1;
+	String name1;
+	String email1;
 
 	// Opening Web page of LetzNav
-	@BeforeClass
+	@BeforeTest
 	public void openBrowser() throws InterruptedException, IOException {
 		// Initializing WebDriver
 		driver = new ChromeDriver();
@@ -57,7 +57,7 @@ public class Testng_Version {
 		}
 		Thread.sleep(5000);
 	}
-
+	
 	private void readValuesFromXls() throws IOException {
 		String path = System.getProperty("user.dir") + "/letznavsheet.xlsx";
 		File src = new File(path);
@@ -67,18 +67,18 @@ public class Testng_Version {
 		XSSFSheet sheet = workbook.getSheetAt(1);
 
 		// Storing of role name and description in string
-		rolename = sheet.getRow(1).getCell(0).getStringCellValue();
-		roledescription = sheet.getRow(1).getCell(1).getStringCellValue();
+		rolename1 = sheet.getRow(1).getCell(0).getStringCellValue();
+		roledescription1 = sheet.getRow(1).getCell(1).getStringCellValue();
 		
 		XSSFSheet sheet1 = workbook.getSheetAt(0);
 		// Storing of username and password in string
-		username = sheet1.getRow(1).getCell(0).getStringCellValue();
-		password = sheet1.getRow(1).getCell(1).getStringCellValue();
+		username1 = sheet1.getRow(1).getCell(0).getStringCellValue();
+		password1 = sheet1.getRow(1).getCell(1).getStringCellValue();
 		
 		XSSFSheet sheet2 = workbook.getSheetAt(2);
 		// Storing of name and email in string
-		name = sheet2.getRow(1).getCell(0).getStringCellValue();
-		email = sheet2.getRow(1).getCell(1).getStringCellValue();
+		name1 = sheet2.getRow(1).getCell(0).getStringCellValue();
+		email1 = sheet2.getRow(1).getCell(1).getStringCellValue();
 
 		workbook.close(); // Closed workbook
 	}
@@ -86,8 +86,8 @@ public class Testng_Version {
 	// Enter userName and Password and click on the Login button....
 	@Test(priority = 0)
 	public void login() throws Exception {
-		page.UN.sendKeys(username); // Find username and fill userName
-		page.PWD.sendKeys(password); // Find PWD and fill it
+		page.UN.sendKeys(username1); // Find username and fill userName
+		page.PWD.sendKeys(password1); // Find PWD and fill it
 		WebElement Login_Button = page.Submit;
 
 		if (Login_Button.isEnabled()) {
@@ -134,8 +134,8 @@ public class Testng_Version {
 		if (status == false) // If Role is not present the execute below block of code
 		{
 			page.AddRole.click(); // Click AddRole button
-			page.RoleName.sendKeys(rolename); // Find RoleName and fill it
-			page.RoleDesc.sendKeys(roledescription); // Find RoleDesc and fill it
+			page.RoleName.sendKeys(rolename1); // Find RoleName and fill it
+			page.RoleDesc.sendKeys(roledescription1); // Find RoleDesc and fill it
 
 			Thread.sleep(4000);
 			// Find Drop down list box of Permissions
@@ -181,8 +181,8 @@ public class Testng_Version {
 			Thread.sleep(4000);
 			page.User_Active_CheckBox.click(); // Checks the 'User_Active' Radio button
 			Thread.sleep(4000);
-			page.User_Name.sendKeys(name); // Finds username and enters in it
-			page.User_Email.sendKeys(email); // Finds password and enters in it
+			page.User_Name.sendKeys(name1); // Finds username and enters in it
+			page.User_Email.sendKeys(email1); // Finds password and enters in it
 
 			Thread.sleep(6000);
 

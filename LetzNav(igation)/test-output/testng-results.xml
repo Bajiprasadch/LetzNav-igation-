@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="4" ignored="0" total="4" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="25461" started-at="2019-02-21T05:15:25Z" finished-at="2019-02-21T05:15:51Z">
+  <suite name="Default suite" duration-ms="23904" started-at="2019-02-21T05:57:33Z" finished-at="2019-02-21T05:57:57Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="25461" started-at="2019-02-21T05:15:25Z" finished-at="2019-02-21T05:15:51Z">
+    <test name="Default test" duration-ms="23904" started-at="2019-02-21T05:57:33Z" finished-at="2019-02-21T05:57:57Z">
       <class name="interviewtest.Testng_Version">
-        <test-method status="PASS" signature="openBrowser()[pri:0, instance:interviewtest.Testng_Version@3c6f6d]" name="openBrowser" is-config="true" duration-ms="19388" started-at="2019-02-21T05:15:25Z" finished-at="2019-02-21T05:15:45Z">
+        <test-method status="PASS" signature="openBrowser()[pri:0, instance:interviewtest.Testng_Version@3c6f6d]" name="openBrowser" is-config="true" duration-ms="17807" started-at="2019-02-21T05:57:33Z" finished-at="2019-02-21T05:57:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openBrowser -->
-        <test-method status="FAIL" signature="login()[pri:0, instance:interviewtest.Testng_Version@3c6f6d]" name="login" duration-ms="4" started-at="2019-02-21T05:15:45Z" finished-at="2019-02-21T05:15:45Z">
+        <test-method status="FAIL" signature="login()[pri:0, instance:interviewtest.Testng_Version@3c6f6d]" name="login" duration-ms="4" started-at="2019-02-21T05:57:51Z" finished-at="2019-02-21T05:57:51Z">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
@@ -50,7 +50,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="FAIL" signature="systemSettings()[pri:1, instance:interviewtest.Testng_Version@3c6f6d]" name="systemSettings" duration-ms="1" started-at="2019-02-21T05:15:45Z" finished-at="2019-02-21T05:15:45Z">
+        <test-method status="FAIL" signature="systemSettings()[pri:1, instance:interviewtest.Testng_Version@3c6f6d]" name="systemSettings" duration-ms="3" started-at="2019-02-21T05:57:51Z" finished-at="2019-02-21T05:57:51Z">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
@@ -89,7 +89,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- systemSettings -->
-        <test-method status="FAIL" signature="addRole()[pri:2, instance:interviewtest.Testng_Version@3c6f6d]" name="addRole" duration-ms="2001" started-at="2019-02-21T05:15:45Z" finished-at="2019-02-21T05:15:47Z">
+        <test-method status="FAIL" signature="addRole()[pri:2, instance:interviewtest.Testng_Version@3c6f6d]" name="addRole" duration-ms="2001" started-at="2019-02-21T05:57:51Z" finished-at="2019-02-21T05:57:53Z">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
@@ -128,7 +128,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- addRole -->
-        <test-method status="FAIL" signature="addUser()[pri:3, instance:interviewtest.Testng_Version@3c6f6d]" name="addUser" duration-ms="2002" started-at="2019-02-21T05:15:47Z" finished-at="2019-02-21T05:15:49Z">
+        <test-method status="FAIL" signature="addUser()[pri:3, instance:interviewtest.Testng_Version@3c6f6d]" name="addUser" duration-ms="2002" started-at="2019-02-21T05:57:53Z" finished-at="2019-02-21T05:57:55Z">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
@@ -167,7 +167,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- addUser -->
-        <test-method status="PASS" signature="close()[pri:0, instance:interviewtest.Testng_Version@3c6f6d]" name="close" is-config="true" duration-ms="2036" started-at="2019-02-21T05:15:49Z" finished-at="2019-02-21T05:15:51Z">
+        <test-method status="PASS" signature="close()[pri:0, instance:interviewtest.Testng_Version@3c6f6d]" name="close" is-config="true" duration-ms="2063" started-at="2019-02-21T05:57:55Z" finished-at="2019-02-21T05:57:57Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- close -->
